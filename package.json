@@ -8,6 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.production.js --progress --hide-modules"
   },
   "dependencies": {
+    "compression": "^1.6.2",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "leancloud-storage": "^1.4.0",

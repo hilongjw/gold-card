@@ -8,7 +8,7 @@ const SERVER_CONFIG = {
         PORT: 8080
     },
     production: {
-        ADDRESS: 'http://gold.bood.in',
+        ADDRESS: 'http://g.umoon.net',
         PORT: 80
     }
 }

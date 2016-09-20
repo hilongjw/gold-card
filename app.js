@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const http = require('http')
-
+const compression = require('compression')
 
 const NODE_ENV = process.env.NODE_ENV || 'production'
 const SERVER_CONFIG = require('./config/index').SERVER_CONFIG[NODE_ENV]
@@ -14,7 +14,7 @@ global.AV = require('./config/index').AV
 
 app.set('views', path.join(__dirname, 'server/views'))
 app.set('view engine', 'ejs')
-
+app.use(compression())
 app.use(router)
 
 if (isDev) {

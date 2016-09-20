@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= entry.get('title') %></title>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+        .entry-item {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative;
+            padding: 0 1.5em;
+            min-height: 92px;
+            -webkit-transition: background-color .3s;
+            transition: background-color .3s;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .screenshot {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            margin-right: 1.5em;
+            width: 82px;
+            height: 82px;
+            background: 50%/cover;
+            background-color: #f8f9fa;
+            border-radius: 2px;
+        }
+
+        .entry-title-box {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 0;
+            flex: 1 1 0;
+            font-size: 1.5em;
+            line-height: 1.5em;
+            font-weight: 600;
+            letter-spacing: .02em;
+            color: #333;
+            min-width: 0;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            -webkit-transition: color, .3s;
+            transition: color, .3s;
+        }
+        .entry-info, .info-row {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            min-width: 0;
+        }
+        .entry-date-box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            margin-left: 8em;
+            color: rgba(24, 37, 50, .3);
+        }
+        .entry-info {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 0;
+            flex: 1 1 0;
+            padding: 0;
+            font-size: .7em;
+            color: rgba(24,37,50,.3);
+        }
+        .entry-info, .info-row {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            min-width: 0;
+        }
+        .info-row {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            min-height: 2.8em;
+        }
+        .meta-badge {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 .8em;
+            height: 25px;
+            line-height: 1;
+            border: 1px solid #f1f1f1;
+            border-radius: 1px;
+            background-color: #fff;
+            -webkit-transition: color,border-color,background-color .3s;
+            transition: color,border-color,background-color .3s;
+        }
+        .meta-badge .icon {
+            font-size: 1.35em;
+        }
+        .meta-badge .count {
+            margin-left: .2em;
+            font-weight: 700;
+        }
+        .meta-tag-box, .meta-tag {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+        .meta-tag-box {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+        }
+        .meta-tag:first-child {
+            margin-left: 0;
+        }
+        .meta-tag {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin: 0 .25em;
+            padding: 0 .8em;
+            height: 25px;
+            letter-spacing: .01em;
+            border-radius: 1px;
+            background-color: hsla(0,0%,95%,.3);
+            -webkit-transition: all .3s;
+            transition: all .3s;
+        }
+        .meta-tag-box, .meta-tag {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+        .user-avatar {
+            margin-left: 1em;
+            width: 25px;
+            height: 25px;
+            background: 50%/cover;
+            background-color: #f8f9fa;
+            border-radius: 1px;
+        }
+        </style>
+  </head>
+  <body>
+    <li class="entry-item">
+        <div class="screenshot" style="background-image: url(<%= entry.get('screenshot').get('url') %>);"></div>
+        <div class="entry-info">
+            <div class="info-row">
+                <div class="entry-title-box">
+                <% if (original) { %>
+                    <a target="_blank" class="entry-title" href="<%= entry.get('originalUrl') %>" title="<%= entry.get('title') %>"><%= entry.get('title') %></a>
+                <% } else { %>
+                    <a target="_blank" class="entry-title" href="http://gold.xitu.io/entry/<%= entry.id %>/detail" title="<%= entry.get('title') %>"><%= entry.get('title') %></a>
+                <% }%>
+                </div>
+                <div class="entry-date-box">
+                    <div class="entry-date"><%=  timeAgo %></div>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="meta-badge likes clickable">
+                    <div class="icon icon-likes ion-android-favorite icon-xlcollection"></div>
+                    <div class="count"><%= entry.get('collectionCount') %></div>
+                </div>
+                <div class="meta-badge comments clickable">
+                    <div class="icon icon-comments ion-android-textsms icon-xlchatbox"></div>
+                    <div class="count"><%= entry.get('commentsCount') %></div>
+                </div>
+                <div class="meta-tag-box">
+                    <% if (entry.get('original')) { %>
+                        <div class="meta-tag">原创</div>
+                    <% } %>
+                    <% entry.get('tagsTitleArray').forEach(function(tag) { %>
+                        <div class="meta-tag clickable"><%= tag %></div>
+                    <% }); %>
+                </div>
+                <div class="user-avatar" style="background-image: url(<%= entry.get('user').get('avatar_large')%>);"></div>
+            </div>
+        </div>
+    </li>
+  </body>
+</html>
